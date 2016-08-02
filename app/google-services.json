@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "992118604599",
+    "firebase_url": "https://iduty-87531.firebaseio.com",
+    "project_id": "iduty-87531",
+    "storage_bucket": "iduty-87531.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:992118604599:android:72daa65449c9a34a",
+        "android_client_info": {
+          "package_name": "com.woka.android.iduty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "992118604599-27c6oomluj8q6c1lq9rivr2en9a4f2tt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1r1FbMYq8MKS2kEJl5R5m_6j9e7KfhMU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

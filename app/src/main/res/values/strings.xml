@@ -1,7 +1,30 @@
 <resources>
+    <!-- APP Settings-->
     <string name="app_name">IDuty</string>
-    <string name="action_settings">Settings</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="google_web_client_id">992118604599-27c6oomluj8q6c1lq9rivr2en9a4f2tt.apps.googleusercontent.com</string>
+    <string name="facebook_app_id">1239486142742939</string>
+    <string name="redireccionamiento_de_OAuth">https://iduty-87531.firebaseapp.com/__/auth/handler</string>
+
+
+    <!-- Layouts Titles-->
+    <string name="title_activity_main">Main</string>
+
+
+    <!-- Widgets Texts-->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="action_settings">Settings</string>
+    <string name="btn_sign_in">Sign In</string>
+    <string name="btn_sign_up">Sign Up</string>
+    <string name="et_hint_welcome">Welcome!</string>
+    <string name="btn_log_out">Log Out</string>
+    <string name="et_hint_email">Email</string>
+    <string name="et_hint_password">Password</string>
+    <string name="btn_login">Login</string>
+    <string name="tv_or">Or</string>
+    <string name="et_hint_repeat_password">Repeat Password</string>
+    <string name="btn_accept">Accept</string>
+    <string name="authentication_failed">Authentication Failed</string>
+    <string name="progress_dialog_title">Please wait</string>
+    <string name="progress_dialog_message">Loading ...</string>
 </resources>
