@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group>
+        <item
+            android:id="@+id/icUserAccount"
+            android:icon="@mipmap/ic_account_circle_black"
+            android:title="@string/ic_user_acount" />
+        <item
+            android:id="@+id/icTurn"
+            android:icon="@mipmap/ic_content_paste_black"
+            android:title="@string/ic_turn" />
+        <item
+            android:id="@+id/icHistorial"
+            android:icon="@mipmap/ic_library_books_black"
+            android:title="@string/ic_historical" />
+    </group>
+
+    <item android:title="@string/second_menu_side">
+        <menu>
+            <item
+                android:id="@+id/icSignOut"
+                android:icon="@mipmap/ic_exit_to_app_black"
+                android:title="@string/ic_sign_out" />
+            <item
+                android:id="@+id/icCloseSession"
+                android:icon="@mipmap/ic_power_settings_new_black"
+                android:title="@string/ic_close_session" />
+        </menu>
+    </item>
+
+</menu>

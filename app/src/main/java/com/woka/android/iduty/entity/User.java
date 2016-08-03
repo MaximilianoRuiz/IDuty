@@ -2,20 +2,30 @@ package com.woka.android.iduty.entity;
 
 public class User {
 
+    private String uid;
     private String firstName;
     private String secondName;
-    private String mail;
+    private String email;
     private String picture;
     private String type;
     private String address;
     private String facebook;
     private String password;
+    private String birth;
     private int id;
     private int age;;
     private int tel;
     private int cel;
 
     public User() {
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getFirstName() {
@@ -34,12 +44,12 @@ public class User {
         this.secondName = secondName;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPicture() {
@@ -112,5 +122,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getBirth() {
+        return birth;
+    }
+
+    public void setBirth(String birth) {
+        this.birth = birth;
     }
 }

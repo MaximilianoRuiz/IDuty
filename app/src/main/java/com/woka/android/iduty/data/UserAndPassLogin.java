@@ -38,8 +38,8 @@ public class UserAndPassLogin extends FirebaseLoginManager implements FirebaseLo
                             Log.w(TAG, "signInWithEmail", task.getException());
                             Toast.makeText(activity, email + " not loged", Toast.LENGTH_SHORT).show();
                         } else {
+                            registerUser(activity);
                             startMainActivity(activity);
-                            registerUser();
                         }
                         dismissDialog();
                     }
@@ -60,8 +60,8 @@ public class UserAndPassLogin extends FirebaseLoginManager implements FirebaseLo
                             Toast.makeText(activity, email + " not created", Toast.LENGTH_SHORT).show();
                             dismissDialog();
                         } else {
+                            registerUser(activity);
                             startMainActivity(activity);
-                            registerUser();
                         }
                     }
                 });

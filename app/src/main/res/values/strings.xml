@@ -27,4 +27,28 @@
     <string name="authentication_failed">Authentication Failed</string>
     <string name="progress_dialog_title">Please wait</string>
     <string name="progress_dialog_message">Loading ...</string>
+
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="ic_user_acount">User Account</string>
+    <string name="second_menu_side">Session</string>
+    <string name="ic_sign_out">Sign Out</string>
+    <string name="ic_close_session">Get Out</string>
+    <string name="ic_historical">Historical</string>
+    <string name="ic_turn">Turns</string>
+
+    <string name="et_hint_first_name">First Name</string>
+    <string name="et_hint_second_name">Last Name</string>
+    <string name="et_hint_picture">Profile Image</string>
+    <string name="et_hint_type">Type</string>
+    <string name="et_hint_address">Address</string>
+    <string name="et_hint_facebook">Facebook</string>
+    <string name="et_hint_id">ID</string>
+    <string name="et_hint_age">Age</string>
+    <string name="et_hint_tel">Tel</string>
+    <string name="et_hint_cel">Cel</string>
 </resources>

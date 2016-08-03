@@ -6,9 +6,6 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.woka.android.iduty.R;
-import com.woka.android.iduty.activity.MainActivity;
-import com.woka.android.iduty.entity.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -16,6 +13,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.woka.android.iduty.IDuty;
+import com.woka.android.iduty.R;
+import com.woka.android.iduty.activity.MainActivity;
+import com.woka.android.iduty.entity.User;
 
 public class FirebaseLoginManager implements FirebaseLoginInterface {
 
@@ -85,7 +86,7 @@ public class FirebaseLoginManager implements FirebaseLoginInterface {
        progressDialog.dismiss();
     }
 
-    protected void registerUser() {
+    protected void registerUser(final Activity activity) {
         final String uid = auth.getCurrentUser().getUid();
         final DatabaseReference myRef = database.getReference("users/" + uid);
         myRef.addValueEventListener(new ValueEventListener() {
@@ -94,16 +95,17 @@ public class FirebaseLoginManager implements FirebaseLoginInterface {
                 User user = dataSnapshot.getValue(User.class);
                 if (user == null) {
                     user = new User();
-                    user.setMail(auth.getCurrentUser().getEmail());
+                    user.setEmail(auth.getCurrentUser().getEmail());
                     myRef.setValue(user);
                 } else {
                     Log.d(TAG, "Value is: " + user);
                 }
+                IDuty.APPLICATION.setUser(user);
+                startMainActivity(activity);
             }
 
             @Override
             public void onCancelled(DatabaseError error) {
-                // Failed to read value
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });

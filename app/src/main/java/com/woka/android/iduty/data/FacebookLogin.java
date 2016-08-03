@@ -52,7 +52,7 @@ public class FacebookLogin extends FirebaseLoginManager implements FirebaseLogin
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
-                        registerUser();
+                        registerUser(activity);
                         startMainActivity(activity);
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithCredential", task.getException());
