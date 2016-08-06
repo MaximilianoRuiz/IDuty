@@ -96,10 +96,15 @@ public class FirebaseLoginManager implements FirebaseLoginInterface {
                 if (user == null) {
                     user = new User();
                     user.setEmail(auth.getCurrentUser().getEmail());
+                    user.setFirstName("Maxi");
+                    user.setSecondName("Ruiz");
                     myRef.setValue(user);
                 } else {
                     Log.d(TAG, "Value is: " + user);
                 }
+                user.setEmail(auth.getCurrentUser().getEmail());
+                user.setFirstName("Maxi");
+                user.setSecondName("Ruiz");
                 IDuty.APPLICATION.setUser(user);
                 startMainActivity(activity);
             }

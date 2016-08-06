@@ -22,14 +22,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tvUserName"
+        android:text="Name"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="Woka S.A."
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tvUserEmail"
-        android:text="www.woka.com.ar" />
+        android:text="Last NAme"
+        android:id="@+id/tvUserEmail" />
 
 </LinearLayout>

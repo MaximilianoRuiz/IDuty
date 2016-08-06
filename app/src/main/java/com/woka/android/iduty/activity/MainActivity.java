@@ -13,8 +13,14 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.login.LoginManager;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.woka.android.iduty.IDuty;
 import com.woka.android.iduty.R;
 import com.woka.android.iduty.data.FirebaseLoginManager;
@@ -27,7 +33,6 @@ public class MainActivity extends AppCompatActivity
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
     private NavigationView navigationView;
-    private Intent intent;
     private View view;
 
     private User user;
@@ -50,19 +55,29 @@ public class MainActivity extends AppCompatActivity
         user = IDuty.APPLICATION.getUser();
 
         initWidgets();
+
+        addListeners();
     }
 
     private void initWidgets(){
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.nav_header_main, null);
+    }
 
-        try {
-            ((TextView) findViewById(R.id.tvUserName)).setText(user.getFirstName() + ", " + user.getSecondName());
-            ((TextView) findViewById(R.id.tvUserEmail)).setText(user.getEmail());
-        } catch (Exception e) {
-            ((TextView) view.findViewById(R.id.tvUserName)).setText(user.getFirstName() + ", " + user.getSecondName());
-            ((TextView) view.findViewById(R.id.tvUserEmail)).setText(user.getEmail());
-        }
+    private void addListeners() {
+        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("users/" + user.getUid());
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ((TextView) findViewById(R.id.tvUserName)).setText(user.getFirstName() + ", " + user.getSecondName());
+                ((TextView) findViewById(R.id.tvUserEmail)).setText(user.getEmail());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Toast.makeText(getBaseContext(), "Problem with Firebase DataBase", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
