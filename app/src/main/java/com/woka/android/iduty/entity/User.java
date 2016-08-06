@@ -4,7 +4,7 @@ public class User {
 
     private String uid;
     private String firstName;
-    private String secondName;
+    private String lastName;
     private String email;
     private String picture;
     private String type;
@@ -36,12 +36,12 @@ public class User {
         this.firstName = firstName;
     }
 
-    public String getSecondName() {
-        return secondName;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -130,5 +130,15 @@ public class User {
 
     public void setBirth(String birth) {
         this.birth = birth;
+    }
+
+    public boolean isUserDataCompleted() {
+        boolean status = true;
+
+        if (this.getFirstName() == null || this.getLastName() == null || this.getEmail() == null ||
+                this.getAddress() == null || this.getBirth() == null || this.getId() == 0) {
+            status = false;
+        }
+        return status;
     }
 }

@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity
     private ActionBarDrawerToggle toggle;
     private NavigationView navigationView;
     private View view;
+    private Intent intent;
+    private TextView tvUserDataInfo;
 
     private User user;
 
@@ -62,6 +64,12 @@ public class MainActivity extends AppCompatActivity
     private void initWidgets(){
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.nav_header_main, null);
+
+        tvUserDataInfo = (TextView) findViewById(R.id.tvUserDataInfo);
+
+        if (user.isUserDataCompleted()) {
+            tvUserDataInfo.setVisibility(View.GONE);
+        }
     }
 
     private void addListeners() {
@@ -69,8 +77,15 @@ public class MainActivity extends AppCompatActivity
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                ((TextView) findViewById(R.id.tvUserName)).setText(user.getFirstName() + ", " + user.getSecondName());
-                ((TextView) findViewById(R.id.tvUserEmail)).setText(user.getEmail());
+                if (user.getFirstName() != null || user.getLastName() != null) {
+                    try {
+                        ((TextView) findViewById(R.id.tvUserName)).setText(user.getFirstName() + ", " + user.getLastName());
+                        ((TextView) findViewById(R.id.tvUserEmail)).setText(user.getEmail());
+                    } catch (Exception e) {
+                        ((TextView) view.findViewById(R.id.tvUserName)).setText(user.getFirstName() + ", " + user.getLastName());
+                        ((TextView) view.findViewById(R.id.tvUserEmail)).setText(user.getEmail());
+                    }
+                }
             }
 
             @Override
@@ -96,14 +111,14 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.icUserAccount) {
-//            intent = new Intent(this, UserAccountActivity.class);
-//            startActivity(intent);
+            intent = new Intent(this, UserAccountActivity.class);
+            startActivity(intent);
         } else if (id == R.id.icTurn) {
-//            intent = new Intent(this, TurnsActivity.class);
-//            startActivity(intent);
+            intent = new Intent(this, TurnsActivity.class);
+            startActivity(intent);
         } else if (id == R.id.icHistorial) {
-//            intent = new Intent(this, HistoryActivity.class);
-//            startActivity(intent);
+            intent = new Intent(this, HistoryActivity.class);
+            startActivity(intent);
         } else if (id == R.id.icSignOut) {
             FirebaseLoginManager firebaseLoginManager = new FirebaseLoginManager();
             firebaseLoginManager.getAuth().signOut();
