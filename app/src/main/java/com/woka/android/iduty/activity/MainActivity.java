@@ -123,6 +123,7 @@ public class MainActivity extends AppCompatActivity
             FirebaseLoginManager firebaseLoginManager = new FirebaseLoginManager();
             firebaseLoginManager.getAuth().signOut();
             LoginManager.getInstance().logOut();
+            IDuty.APPLICATION.setIsMainActivityRunning(false);
             finish();
             Intent intent = new Intent(getBaseContext(), LoginActivity.class);
             startActivity(intent);

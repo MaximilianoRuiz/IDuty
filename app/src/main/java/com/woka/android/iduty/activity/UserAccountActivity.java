@@ -25,13 +25,17 @@ public class UserAccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_account);
 
-        user = IDuty.APPLICATION.getUser();
-
         initWidget();
 
         setValues();
 
         addListener();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+//        IDuty.APPLICATION.getFirebaseLoginManager().updateUser(user);
     }
 
     private void initWidget() {
@@ -48,7 +52,9 @@ public class UserAccountActivity extends AppCompatActivity {
         tvEmail = (TextView) findViewById(R.id.tvEmail);
     }
 
-    private void setValues() {
+    public void setValues() {
+        user = IDuty.APPLICATION.getUser();
+
         if (user.getFirstName() != null) {
             tvFirstName.setText(user.getFirstName());
         }

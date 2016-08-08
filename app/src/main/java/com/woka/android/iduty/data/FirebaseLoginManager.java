@@ -95,14 +95,19 @@ public class FirebaseLoginManager implements FirebaseLoginInterface {
                 User user = dataSnapshot.getValue(User.class);
                 if (user == null) {
                     user = new User();
+                    user.setUid(uid);
                     user.setEmail(auth.getCurrentUser().getEmail());
                     myRef.setValue(user);
                 } else {
                     Log.d(TAG, "Value is: " + user);
                 }
                 user.setEmail(auth.getCurrentUser().getEmail());
+                user.setUid(uid);
                 IDuty.APPLICATION.setUser(user);
-                startMainActivity(activity);
+                if (!IDuty.APPLICATION.isMainActivityRunning()) {
+                    IDuty.APPLICATION.setIsMainActivityRunning(true);
+                    startMainActivity(activity);
+                }
             }
 
             @Override
@@ -110,5 +115,13 @@ public class FirebaseLoginManager implements FirebaseLoginInterface {
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
+    }
+
+    public void updateUser (User user) {
+        try {
+            database.getReference("users").child(auth.getCurrentUser().getUid()).setValue(user);
+        } catch (Exception e) {
+            Log.e("Firebase Error: ", e.getMessage());
+        }
     }
 }

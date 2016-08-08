@@ -23,6 +23,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/etLastName"
                 android:inputType="textPersonName"
                 android:layout_weight="1"
                 android:hint="Apellido"/>
@@ -38,6 +39,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/etFirstName"
                 android:inputType="textPersonName"
                 android:hint="Nombre" />
 
@@ -60,6 +62,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/etId"
                 android:inputType="number"
                 android:hint="D.N.I." />
 
@@ -74,6 +77,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/etAge"
                 android:inputType="number"
                 android:hint="Edad" />
 
@@ -88,6 +92,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/etBirth"
                 android:inputType="date"
                 android:hint="Nacimiento" />
 

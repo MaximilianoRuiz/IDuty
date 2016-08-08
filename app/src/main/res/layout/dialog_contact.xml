@@ -21,6 +21,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/etAddress"
                 android:inputType="textPersonName"
                 android:layout_weight="1"
                 android:hint="Direccion"/>
@@ -45,6 +46,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/etTel"
                 android:inputType="number"
                 android:hint="Telefono" />
 
@@ -59,6 +61,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/etCel"
                 android:inputType="number"
                 android:hint="Celular" />
 
@@ -74,6 +77,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/etEmail"
             android:inputType="textEmailAddress"
             android:hint="Email" />
 
