@@ -13,11 +13,24 @@ public class User {
     private String password;
     private String birth;
     private int id;
-    private int age;;
+    private int age;
     private int tel;
     private int cel;
 
     public User() {
+        this.firstName = "";
+        this.lastName = "";
+        this.email = "";
+        this.picture = "";
+        this.type = "";
+        this.address = "";
+        this.facebook = "";
+        this.password = "";
+        this.birth = "";
+        this.id = 0;
+        this.age = 0;
+        this.tel = 0;
+        this.cel = 0;
     }
 
     public String getUid() {
