@@ -17,11 +17,11 @@ import com.woka.android.iduty.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClinicsFragment extends Fragment {
+public class SpecialtiesFragment extends Fragment {
 
     GridView gridview;
 
-    public ClinicsFragment() {
+    public SpecialtiesFragment() {
     }
 
     @Override
