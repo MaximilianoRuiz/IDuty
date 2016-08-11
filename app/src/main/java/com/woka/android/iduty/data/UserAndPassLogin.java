@@ -39,7 +39,6 @@ public class UserAndPassLogin extends FirebaseLoginManager implements FirebaseLo
                             Toast.makeText(activity, email + " not loged", Toast.LENGTH_SHORT).show();
                         } else {
                             registerUser(activity);
-                            startMainActivity(activity);
                         }
                         dismissDialog();
                     }
@@ -61,7 +60,6 @@ public class UserAndPassLogin extends FirebaseLoginManager implements FirebaseLo
                             dismissDialog();
                         } else {
                             registerUser(activity);
-                            startMainActivity(activity);
                         }
                     }
                 });

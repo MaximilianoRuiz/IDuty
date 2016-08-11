@@ -1,5 +1,6 @@
 package com.woka.android.iduty.activity;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import com.woka.android.iduty.IDuty;
 import com.woka.android.iduty.R;
 import com.woka.android.iduty.data.FirebaseLoginManager;
 import com.woka.android.iduty.entity.User;
+import com.woka.android.iduty.fragment.ClinicsFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity
     private View view;
     private Intent intent;
     private TextView tvUserDataInfo;
+    private Fragment fragment;
 
     private User user;
 
@@ -45,6 +48,15 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        fragment = new ClinicsFragment();
+
+        if (savedInstanceState == null) {
+            getFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.container, fragment)
+                    .commit();
+        }
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         toggle = new ActionBarDrawerToggle(

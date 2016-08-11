@@ -5,6 +5,7 @@
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/woka/android/iduty/dialog/AccountDialog.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/woka/android/iduty/dialog/ContactDialog.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/woka/android/iduty/dialog/PersonalInfoDialog.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/adapter_grid_item.xml" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/adapter_turn_row.xml" charset="windows-1252" />
     <file url="PROJECT" charset="UTF-8" />
   </component>

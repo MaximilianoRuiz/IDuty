@@ -53,7 +53,6 @@ public class FacebookLogin extends FirebaseLoginManager implements FirebaseLogin
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
                         registerUser(activity);
-                        startMainActivity(activity);
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithCredential", task.getException());
                             dismissDialog();
@@ -61,7 +60,6 @@ public class FacebookLogin extends FirebaseLoginManager implements FirebaseLogin
                                     Toast.LENGTH_SHORT).show();
                         }
 
-                        // ...
                     }
                 });
     }

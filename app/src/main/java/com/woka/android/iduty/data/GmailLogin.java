@@ -59,7 +59,6 @@ public class GmailLogin extends FirebaseLoginManager implements FirebaseLoginInt
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
                         registerUser(activity);
-
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithCredential", task.getException());
                             dismissDialog();
