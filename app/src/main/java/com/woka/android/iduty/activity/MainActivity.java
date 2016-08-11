@@ -27,9 +27,13 @@ import com.woka.android.iduty.R;
 import com.woka.android.iduty.data.FirebaseLoginManager;
 import com.woka.android.iduty.entity.User;
 import com.woka.android.iduty.fragment.ClinicsFragment;
+import com.woka.android.iduty.fragment.SpecialistsFragment;
+import com.woka.android.iduty.fragment.SpecialtiesFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, FragmentCoordinatorInterface{
+
+    public static final String ACTIVITY_KEY = "ACTIVITY";
 
     private Toolbar toolbar;
     private DrawerLayout drawer;
@@ -39,6 +43,7 @@ public class MainActivity extends AppCompatActivity
     private Intent intent;
     private TextView tvUserDataInfo;
     private Fragment fragment;
+    private Bundle bundle;
 
     private User user;
 
@@ -49,7 +54,11 @@ public class MainActivity extends AppCompatActivity
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        bundle = new Bundle();
+        bundle.putSerializable(ACTIVITY_KEY, this);
+
         fragment = new ClinicsFragment();
+        fragment.setArguments(bundle);
 
         if (savedInstanceState == null) {
             getFragmentManager()
@@ -146,5 +155,29 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void changeFragment(String id, int fragmentNum) {
+
+        switch (fragmentNum) {
+            case 0:
+                fragment = new ClinicsFragment();
+                break;
+            case 1:
+                fragment = new SpecialtiesFragment();
+                break;
+            case 2:
+                fragment = new SpecialistsFragment();
+                break;
+        }
+        fragment.setArguments(bundle);
+        bundle.putSerializable("ID", id);
+
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, fragment)
+                .addToBackStack(null)
+                .commit();
     }
 }

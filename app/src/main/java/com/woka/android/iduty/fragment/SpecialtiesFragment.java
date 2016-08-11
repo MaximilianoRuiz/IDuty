@@ -30,10 +30,12 @@ public class SpecialtiesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_clinics, container, false);
 
         List<String> clinics = new ArrayList<>();
-        clinics.add("Eri");
-        clinics.add("Eri2");
-        clinics.add("Er3");
-        clinics.add("Er4");
+        clinics.add("Especialidad1");
+        clinics.add("Especialidad2");
+        clinics.add("Especialidad3");
+        clinics.add("Especialidad4");
+        clinics.add("Especialidad5");
+        clinics.add("Especialidad6");
 
         gridview = (GridView) view.findViewById(R.id.gridview);
         gridview.setAdapter(new ImageAdapter(getActivity(), clinics));

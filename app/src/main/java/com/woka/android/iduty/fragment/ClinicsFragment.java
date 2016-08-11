@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.woka.android.iduty.R;
+import com.woka.android.iduty.activity.FragmentCoordinatorInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ import java.util.List;
 public class ClinicsFragment extends Fragment {
 
     GridView gridview;
+    FragmentCoordinatorInterface anInterface;
 
     public ClinicsFragment() {
     }
@@ -29,6 +31,7 @@ public class ClinicsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_clinics, container, false);
 
+        anInterface = (FragmentCoordinatorInterface) getArguments().getSerializable("ACTIVITY");
         List<String> clinics = new ArrayList<>();
         clinics.add("Eri");
         clinics.add("Eri2");
@@ -41,6 +44,7 @@ public class ClinicsFragment extends Fragment {
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
+                anInterface.changeFragment(Integer.toString(position), 1);
                 Toast.makeText(getActivity(), "" + position,
                         Toast.LENGTH_SHORT).show();
             }
