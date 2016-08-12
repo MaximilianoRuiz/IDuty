@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.woka.android.iduty.R;
+import com.woka.android.iduty.activity.FragmentCoordinatorInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ import java.util.List;
 public class SpecialtiesFragment extends Fragment {
 
     GridView gridview;
+    FragmentCoordinatorInterface anInterface;
 
     public SpecialtiesFragment() {
     }
@@ -29,20 +31,22 @@ public class SpecialtiesFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_clinics, container, false);
 
-        List<String> clinics = new ArrayList<>();
-        clinics.add("Especialidad1");
-        clinics.add("Especialidad2");
-        clinics.add("Especialidad3");
-        clinics.add("Especialidad4");
-        clinics.add("Especialidad5");
-        clinics.add("Especialidad6");
+        anInterface = (FragmentCoordinatorInterface) getArguments().getSerializable("ACTIVITY");
+        List<String> specialities = new ArrayList<>();
+        specialities.add("Especialidad1");
+        specialities.add("Especialidad2");
+        specialities.add("Especialidad3");
+        specialities.add("Especialidad4");
+        specialities.add("Especialidad5");
+        specialities.add("Especialidad6");
 
         gridview = (GridView) view.findViewById(R.id.gridview);
-        gridview.setAdapter(new ImageAdapter(getActivity(), clinics));
+        gridview.setAdapter(new ImageAdapter(getActivity(), specialities));
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
+                anInterface.changeFragment(Integer.toString(position), 2);
                 Toast.makeText(getActivity(), "" + position,
                         Toast.LENGTH_SHORT).show();
             }
