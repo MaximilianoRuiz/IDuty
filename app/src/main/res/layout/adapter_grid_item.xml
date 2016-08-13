@@ -10,7 +10,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
         android:id="@+id/tvClinic"
-        android:textColor="#fff"
-        android:background="@color/colorPrimary"
+        android:textColor="@color/colorPrimary"
+        android:background="@drawable/grid_button"
         android:gravity="center" />
 </LinearLayout>

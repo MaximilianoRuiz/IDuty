@@ -12,6 +12,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.woka.android.iduty.IDuty;
 import com.woka.android.iduty.R;
 import com.woka.android.iduty.activity.FragmentCoordinatorInterface;
 
@@ -32,6 +33,8 @@ public class SpecialistsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_clinics, container, false);
 
+        anInterface = IDuty.APPLICATION.getCoordinatorInterface();
+
         List<String> specialists = new ArrayList<>();
         specialists.add("Especialista1");
         specialists.add("Especialista2");
@@ -45,7 +48,7 @@ public class SpecialistsFragment extends Fragment {
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-//                anInterface.changeFragment(Integer.toString(position), 1);
+                anInterface.changeFragment(Integer.toString(position), 3);
                 Toast.makeText(getActivity(), "" + position,
                         Toast.LENGTH_SHORT).show();
             }

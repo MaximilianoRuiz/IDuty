@@ -29,6 +29,7 @@ import com.woka.android.iduty.entity.User;
 import com.woka.android.iduty.fragment.ClinicsFragment;
 import com.woka.android.iduty.fragment.SpecialistsFragment;
 import com.woka.android.iduty.fragment.SpecialtiesFragment;
+import com.woka.android.iduty.fragment.TurnFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, FragmentCoordinatorInterface{
@@ -167,6 +168,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case 2:
                 fragment = new SpecialistsFragment();
+                break;
+            case 3:
+                fragment = new TurnFragment();
                 break;
         }
 
