@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity
     private Intent intent;
     private TextView tvUserDataInfo;
     private Fragment fragment;
-    private Bundle bundle;
 
     private User user;
 
@@ -54,11 +53,8 @@ public class MainActivity extends AppCompatActivity
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        bundle = new Bundle();
-        bundle.putSerializable(ACTIVITY_KEY, this);
 
         fragment = new ClinicsFragment();
-        fragment.setArguments(bundle);
 
         if (savedInstanceState == null) {
             getFragmentManager()
@@ -80,6 +76,8 @@ public class MainActivity extends AppCompatActivity
         initWidgets();
 
         addListeners();
+
+        IDuty.APPLICATION.setCoordinatorInterface(this);
     }
 
     private void initWidgets(){
@@ -171,8 +169,6 @@ public class MainActivity extends AppCompatActivity
                 fragment = new SpecialistsFragment();
                 break;
         }
-        fragment.setArguments(bundle);
-        bundle.putSerializable("ID", id);
 
         getFragmentManager()
                 .beginTransaction()

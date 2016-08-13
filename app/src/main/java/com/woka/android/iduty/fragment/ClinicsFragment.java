@@ -12,6 +12,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.woka.android.iduty.IDuty;
 import com.woka.android.iduty.R;
 import com.woka.android.iduty.activity.FragmentCoordinatorInterface;
 
@@ -30,8 +31,8 @@ public class ClinicsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_clinics, container, false);
+        anInterface = IDuty.APPLICATION.getCoordinatorInterface();
 
-        anInterface = (FragmentCoordinatorInterface) getArguments().getSerializable("ACTIVITY");
         List<String> clinics = new ArrayList<>();
         clinics.add("Eri");
         clinics.add("Eri2");

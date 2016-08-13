@@ -32,7 +32,6 @@ public class SpecialistsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_clinics, container, false);
 
-        anInterface = (FragmentCoordinatorInterface) getArguments().getSerializable("ACTIVITY");
         List<String> specialists = new ArrayList<>();
         specialists.add("Especialista1");
         specialists.add("Especialista2");

@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+import com.woka.android.iduty.activity.FragmentCoordinatorInterface;
 import com.woka.android.iduty.data.FirebaseLoginManager;
 import com.woka.android.iduty.entity.User;
 
@@ -12,6 +13,7 @@ public class IDuty extends Application {
     public static IDuty APPLICATION;
     private User user;
     private FirebaseLoginManager firebaseLoginManager;
+    private FragmentCoordinatorInterface coordinatorInterface;
 
     private boolean isMainActivityRunning;
 
@@ -31,6 +33,14 @@ public class IDuty extends Application {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public FragmentCoordinatorInterface getCoordinatorInterface() {
+        return coordinatorInterface;
+    }
+
+    public void setCoordinatorInterface(FragmentCoordinatorInterface coordinatorInterface) {
+        this.coordinatorInterface = coordinatorInterface;
     }
 
     public FirebaseLoginManager getFirebaseLoginManager() {
