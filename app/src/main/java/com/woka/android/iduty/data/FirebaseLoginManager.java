@@ -124,4 +124,8 @@ public class FirebaseLoginManager implements FirebaseLoginInterface {
             Log.e("Firebase Error: ", e.getMessage());
         }
     }
+
+    public DatabaseReference getReference(String entity) {
+        return database.getReference(entity);
+    }
 }

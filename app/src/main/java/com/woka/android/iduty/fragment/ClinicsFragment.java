@@ -12,9 +12,14 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import com.woka.android.iduty.IDuty;
 import com.woka.android.iduty.R;
 import com.woka.android.iduty.activity.FragmentCoordinatorInterface;
+import com.woka.android.iduty.entity.Clinic;
+import com.woka.android.iduty.entity.EntityInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +28,8 @@ public class ClinicsFragment extends Fragment {
 
     GridView gridview;
     FragmentCoordinatorInterface anInterface;
+
+    private List<EntityInterface> clinics;
 
     public ClinicsFragment() {
     }
@@ -33,14 +40,7 @@ public class ClinicsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_clinics, container, false);
         anInterface = IDuty.APPLICATION.getCoordinatorInterface();
 
-        List<String> clinics = new ArrayList<>();
-        clinics.add("Eri");
-        clinics.add("Eri2");
-        clinics.add("Er3");
-        clinics.add("Er4");
-
         gridview = (GridView) view.findViewById(R.id.gridview);
-        gridview.setAdapter(new ImageAdapter(getActivity(), clinics));
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
@@ -51,17 +51,38 @@ public class ClinicsFragment extends Fragment {
             }
         });
 
+        readEntity();
+
         return view;
     }
 
-    public class ImageAdapter extends BaseAdapter {
+    private void readEntity() {
+        IDuty.APPLICATION.getFirebaseLoginManager().getReference("clinics")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        clinics = new ArrayList<>();
+                        for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            clinics.add(snapshot.getValue(Clinic.class));
+                        }
+                        gridview.setAdapter(new ImageAdapter(getActivity(), clinics));
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+    }
+
+    class ImageAdapter extends BaseAdapter {
 
         private Context context;
-        private List<String> clinics;
+        private List<EntityInterface> entityList;
 
-        public ImageAdapter(Context context, List<String> clinics) {
+        public ImageAdapter(Context context, List<EntityInterface> entityList) {
             this.context = context;
-            this.clinics = clinics;
+            this.entityList = entityList;
         }
 
         public View getView(int position, View convertView, ViewGroup parent) {
@@ -72,14 +93,14 @@ public class ClinicsFragment extends Fragment {
             View view =  inflater.inflate(R.layout.adapter_grid_item, null);
 
             TextView textView = (TextView) view.findViewById(R.id.tvClinic);
-            textView.setText(clinics.get(position));
+            textView.setText(entityList.get(position).getEntityName());
 
             return view;
         }
 
         @Override
         public int getCount() {
-            return clinics.size();
+            return entityList.size();
         }
 
         @Override
@@ -93,4 +114,5 @@ public class ClinicsFragment extends Fragment {
         }
 
     }
+
 }
