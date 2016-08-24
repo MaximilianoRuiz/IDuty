@@ -1,9 +1,13 @@
 package com.woka.android.iduty.entity;
 
+import java.util.ArrayList;
+
 public class Clinic implements EntityInterface{
 
     private String id;
     private String name;
+
+    private ArrayList specialitieList;
 
     public Clinic() {
     }
@@ -22,6 +26,14 @@ public class Clinic implements EntityInterface{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public ArrayList getSpecialitieList() {
+        return specialitieList;
+    }
+
+    public void setSpecialitieList(ArrayList specialities) {
+        this.specialitieList = specialities;
     }
 
     @Override

@@ -46,6 +46,9 @@ public class ClinicsFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
                 anInterface.changeFragment(Integer.toString(position), 1);
+
+                IDuty.APPLICATION.createTurn();
+                IDuty.APPLICATION.getTurn().setClinic((Clinic) clinics.get(position));
                 Toast.makeText(getActivity(), "" + position,
                         Toast.LENGTH_SHORT).show();
             }
@@ -63,7 +66,10 @@ public class ClinicsFragment extends Fragment {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         clinics = new ArrayList<>();
                         for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            clinics.add(snapshot.getValue(Clinic.class));
+                            Clinic clinic = snapshot.getValue(Clinic.class);
+                            ArrayList list = (ArrayList) snapshot.child("specialities").getValue();
+                            clinic.setSpecialitieList(list);
+                            clinics.add(clinic);
                         }
                         gridview.setAdapter(new ImageAdapter(getActivity(), clinics));
                     }
