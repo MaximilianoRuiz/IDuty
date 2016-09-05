@@ -16,6 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.woka.android.iduty.IDuty;
 import com.woka.android.iduty.R;
 import com.woka.android.iduty.activity.MainActivity;
+import com.woka.android.iduty.entity.Clinic;
 import com.woka.android.iduty.entity.User;
 
 public class FirebaseLoginManager implements FirebaseLoginInterface {
@@ -120,6 +121,14 @@ public class FirebaseLoginManager implements FirebaseLoginInterface {
     public void updateUser (User user) {
         try {
             database.getReference("users").child(auth.getCurrentUser().getUid()).setValue(user);
+        } catch (Exception e) {
+            Log.e("Firebase Error: ", e.getMessage());
+        }
+    }
+
+    public void setClinic(Clinic clinic) {
+        try {
+            database.getReference("clinics").child("bla").setValue(clinic);
         } catch (Exception e) {
             Log.e("Firebase Error: ", e.getMessage());
         }

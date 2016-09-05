@@ -7,7 +7,7 @@ public class Clinic implements EntityInterface{
     private String id;
     private String name;
 
-    private ArrayList specialitieList;
+    private ArrayList<Speciality> specialitieList;
 
     public Clinic() {
     }
@@ -28,11 +28,11 @@ public class Clinic implements EntityInterface{
         this.name = name;
     }
 
-    public ArrayList getSpecialitieList() {
+    public ArrayList<Speciality> getSpecialitieList() {
         return specialitieList;
     }
 
-    public void setSpecialitieList(ArrayList specialities) {
+    public void setSpecialitieList(ArrayList<Speciality> specialities) {
         this.specialitieList = specialities;
     }
 

@@ -6,6 +6,7 @@ import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 import com.woka.android.iduty.activity.FragmentCoordinatorInterface;
 import com.woka.android.iduty.data.FirebaseLoginManager;
+import com.woka.android.iduty.entity.Clinic;
 import com.woka.android.iduty.entity.Turn;
 import com.woka.android.iduty.entity.User;
 
@@ -68,5 +69,9 @@ public class IDuty extends Application {
 
     public void setIsMainActivityRunning(boolean isMainActivityRunning) {
         this.isMainActivityRunning = isMainActivityRunning;
+    }
+
+    public void setClinic(Clinic  clinic) {
+        firebaseLoginManager.setClinic(clinic);
     }
 }
