@@ -136,29 +136,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.icUserAccount) {
-//            intent = new Intent(this, UserAccountActivity.class);
-//            startActivity(intent);
-
-            Clinic clinic = new Clinic();
-            clinic.setId("clinic1");
-            clinic.setName("Nueva");
-            Speciality speciality = new Speciality();
-            speciality.setId("speciality1");
-            speciality.setName("rrrrrrrr");
-            Specialist specialist = new Specialist();
-            specialist.setId("specialist1");
-            specialist.setName("eee2ee");
-
-            HashMap<String, Speciality> list = new HashMap<>();
-            HashMap<String, Specialist> list1 = new HashMap<>();
-
-            list1.put("specialist1", specialist);
-            speciality.setSpecialistList(list1);
-            list.put("speciality1", speciality);
-
-            clinic.setSpecialitieList(list);
-            IDuty.APPLICATION.setClinic(clinic);
-
+            intent = new Intent(this, UserAccountActivity.class);
+            startActivity(intent);
         } else if (id == R.id.icTurn) {
             intent = new Intent(this, TurnsActivity.class);
             startActivity(intent);

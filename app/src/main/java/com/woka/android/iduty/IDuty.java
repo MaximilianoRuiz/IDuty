@@ -83,4 +83,8 @@ public class IDuty extends Application {
     public void setClinic(Clinic  clinic) {
         firebaseLoginManager.setClinic(clinic);
     }
+
+    public void sendTurn(Turn turn) {
+        firebaseLoginManager.sendTurn(turn);
+    }
 }

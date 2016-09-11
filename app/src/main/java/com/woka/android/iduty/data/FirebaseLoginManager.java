@@ -17,6 +17,7 @@ import com.woka.android.iduty.IDuty;
 import com.woka.android.iduty.R;
 import com.woka.android.iduty.activity.MainActivity;
 import com.woka.android.iduty.entity.Clinic;
+import com.woka.android.iduty.entity.Turn;
 import com.woka.android.iduty.entity.User;
 
 public class FirebaseLoginManager implements FirebaseLoginInterface {
@@ -129,6 +130,16 @@ public class FirebaseLoginManager implements FirebaseLoginInterface {
     public void setClinic(Clinic clinic) {
         try {
             database.getReference("clinics").child("clinic1").setValue(clinic);
+        } catch (Exception e) {
+            Log.e("Firebase Error: ", e.getMessage());
+        }
+    }
+
+    public void sendTurn(Turn turn) {
+        try {
+            String user = turn.getUserUid();
+            String child = turn.getId();
+            database.getReference("turns").child(user).child(child).setValue(turn);
         } catch (Exception e) {
             Log.e("Firebase Error: ", e.getMessage());
         }
