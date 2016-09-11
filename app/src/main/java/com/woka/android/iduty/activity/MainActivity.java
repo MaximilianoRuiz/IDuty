@@ -25,11 +25,16 @@ import com.google.firebase.database.ValueEventListener;
 import com.woka.android.iduty.IDuty;
 import com.woka.android.iduty.R;
 import com.woka.android.iduty.data.FirebaseLoginManager;
+import com.woka.android.iduty.entity.Clinic;
+import com.woka.android.iduty.entity.Specialist;
+import com.woka.android.iduty.entity.Speciality;
 import com.woka.android.iduty.entity.User;
 import com.woka.android.iduty.fragment.ClinicsFragment;
 import com.woka.android.iduty.fragment.SpecialistsFragment;
 import com.woka.android.iduty.fragment.SpecialtiesFragment;
 import com.woka.android.iduty.fragment.TurnFragment;
+
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, FragmentCoordinatorInterface{
@@ -131,8 +136,29 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.icUserAccount) {
-            intent = new Intent(this, UserAccountActivity.class);
-            startActivity(intent);
+//            intent = new Intent(this, UserAccountActivity.class);
+//            startActivity(intent);
+
+            Clinic clinic = new Clinic();
+            clinic.setId("clinic1");
+            clinic.setName("Nueva");
+            Speciality speciality = new Speciality();
+            speciality.setId("speciality1");
+            speciality.setName("rrrrrrrr");
+            Specialist specialist = new Specialist();
+            specialist.setId("specialist1");
+            specialist.setName("eee2ee");
+
+            HashMap<String, Speciality> list = new HashMap<>();
+            HashMap<String, Specialist> list1 = new HashMap<>();
+
+            list1.put("specialist1", specialist);
+            speciality.setSpecialistList(list1);
+            list.put("speciality1", speciality);
+
+            clinic.setSpecialitieList(list);
+            IDuty.APPLICATION.setClinic(clinic);
+
         } else if (id == R.id.icTurn) {
             intent = new Intent(this, TurnsActivity.class);
             startActivity(intent);

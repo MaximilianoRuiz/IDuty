@@ -128,7 +128,7 @@ public class FirebaseLoginManager implements FirebaseLoginInterface {
 
     public void setClinic(Clinic clinic) {
         try {
-            database.getReference("clinics").child("bla").setValue(clinic);
+            database.getReference("clinics").child("clinic1").setValue(clinic);
         } catch (Exception e) {
             Log.e("Firebase Error: ", e.getMessage());
         }

@@ -1,13 +1,13 @@
 package com.woka.android.iduty.entity;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Clinic implements EntityInterface{
 
     private String id;
     private String name;
 
-    private ArrayList<Speciality> specialitieList;
+    public HashMap<String, Speciality> specialitieList;
 
     public Clinic() {
     }
@@ -28,21 +28,12 @@ public class Clinic implements EntityInterface{
         this.name = name;
     }
 
-    public ArrayList<Speciality> getSpecialitieList() {
+    public HashMap<String, Speciality> getSpecialitieList() {
         return specialitieList;
     }
 
-    public void setSpecialitieList(ArrayList<Speciality> specialities) {
+    public void setSpecialitieList(HashMap<String, Speciality> specialities) {
         this.specialitieList = specialities;
     }
 
-    @Override
-    public String getEntityId() {
-        return id;
-    }
-
-    @Override
-    public String getEntityName() {
-        return name;
-    }
 }

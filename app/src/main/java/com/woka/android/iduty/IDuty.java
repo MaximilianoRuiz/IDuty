@@ -18,6 +18,7 @@ public class IDuty extends Application {
 
     private User user;
     private Turn turn;
+    private Clinic myClinic;
 
     private boolean isMainActivityRunning;
 
@@ -49,6 +50,14 @@ public class IDuty extends Application {
 
     public void createTurn() {
         turn = new Turn();
+    }
+
+    public Clinic getMyClinic() {
+        return myClinic;
+    }
+
+    public void setMyClinic(Clinic myClinic) {
+        this.myClinic = myClinic;
     }
 
     public FragmentCoordinatorInterface getCoordinatorInterface() {

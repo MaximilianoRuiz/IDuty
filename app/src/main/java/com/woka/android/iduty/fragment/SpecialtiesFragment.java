@@ -16,15 +16,20 @@ import com.woka.android.iduty.IDuty;
 import com.woka.android.iduty.R;
 import com.woka.android.iduty.activity.FragmentCoordinatorInterface;
 import com.woka.android.iduty.entity.Clinic;
+import com.woka.android.iduty.entity.EntityInterface;
 import com.woka.android.iduty.entity.Speciality;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class SpecialtiesFragment extends Fragment {
 
     GridView gridview;
     FragmentCoordinatorInterface anInterface;
+
+    private List<EntityInterface> specialities;
+    private HashMap<String, Speciality> specialityHashMap;
 
     public SpecialtiesFragment() {
     }
@@ -33,7 +38,6 @@ public class SpecialtiesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_clinics, container, false);
-
         anInterface = IDuty.APPLICATION.getCoordinatorInterface();
 
         List<String> specialities = new ArrayList<>();
@@ -50,19 +54,6 @@ public class SpecialtiesFragment extends Fragment {
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-
-                Clinic clinic = new Clinic();
-                clinic.setId("23343");
-                clinic.setName("Nueva");
-                ArrayList<Speciality> list = new ArrayList<Speciality>();
-                Speciality speciality = new Speciality();
-                speciality.setId("1111");
-                speciality.setName("rrrrrrrr");
-                list.add(speciality);
-                list.add(speciality);
-                list.add(speciality);
-                clinic.setSpecialitieList(list);
-                IDuty.APPLICATION.setClinic(clinic);
 
                 anInterface.changeFragment(Integer.toString(position), 2);
                 Toast.makeText(getActivity(), "" + position,

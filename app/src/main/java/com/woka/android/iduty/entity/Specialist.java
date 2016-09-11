@@ -1,6 +1,8 @@
 package com.woka.android.iduty.entity;
 
-public class Specialist {
+import java.util.HashMap;
+
+public class Specialist implements EntityInterface{
 
     private String id;
     private String name;

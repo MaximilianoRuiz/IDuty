@@ -1,9 +1,13 @@
 package com.woka.android.iduty.entity;
 
-public class Speciality {
+import java.util.HashMap;
+
+public class Speciality implements EntityInterface{
 
     private String id;
     private String name;
+
+    public HashMap<String, Specialist> specialistList;
 
     public Speciality() {
     }
@@ -22,5 +26,13 @@ public class Speciality {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public HashMap<String, Specialist> getSpecialistList() {
+        return specialistList;
+    }
+
+    public void setSpecialistList(HashMap<String, Specialist> specialistList) {
+        this.specialistList = specialistList;
     }
 }

@@ -22,6 +22,7 @@ import com.woka.android.iduty.entity.Clinic;
 import com.woka.android.iduty.entity.EntityInterface;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class ClinicsFragment extends Fragment {
@@ -30,6 +31,7 @@ public class ClinicsFragment extends Fragment {
     FragmentCoordinatorInterface anInterface;
 
     private List<EntityInterface> clinics;
+    private HashMap<String, Clinic> clinicHashMap;
 
     public ClinicsFragment() {
     }
@@ -48,6 +50,7 @@ public class ClinicsFragment extends Fragment {
                 anInterface.changeFragment(Integer.toString(position), 1);
 
                 IDuty.APPLICATION.createTurn();
+                IDuty.APPLICATION.setMyClinic(clinicHashMap.get(clinics.get(position).getId()));
                 IDuty.APPLICATION.getTurn().setClinic((Clinic) clinics.get(position));
                 Toast.makeText(getActivity(), "" + position,
                         Toast.LENGTH_SHORT).show();
@@ -65,11 +68,13 @@ public class ClinicsFragment extends Fragment {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         clinics = new ArrayList<>();
+                        clinicHashMap = new HashMap<String, Clinic>();
                         for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                             Clinic clinic = snapshot.getValue(Clinic.class);
-                            ArrayList list = (ArrayList) snapshot.child("specialities").getValue();
-                            clinic.setSpecialitieList(list);
+//                            HashMap list = (HashMap) snapshot.child("specialities").getValue();
+//                            clinic.setSpecialitieList(list);
                             clinics.add(clinic);
+                            clinicHashMap.put(clinic.getId(), clinic);
                         }
                         gridview.setAdapter(new ImageAdapter(getActivity(), clinics));
                     }
@@ -99,7 +104,7 @@ public class ClinicsFragment extends Fragment {
             View view =  inflater.inflate(R.layout.adapter_grid_item, null);
 
             TextView textView = (TextView) view.findViewById(R.id.tvClinic);
-            textView.setText(entityList.get(position).getEntityName());
+            textView.setText(entityList.get(position).getName());
 
             return view;
         }
