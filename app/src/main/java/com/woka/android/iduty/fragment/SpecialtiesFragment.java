@@ -21,7 +21,9 @@ import com.woka.android.iduty.entity.Speciality;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class SpecialtiesFragment extends Fragment {
 
@@ -40,38 +42,43 @@ public class SpecialtiesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_clinics, container, false);
         anInterface = IDuty.APPLICATION.getCoordinatorInterface();
 
-        List<String> specialities = new ArrayList<>();
-        specialities.add("Especialidad1");
-        specialities.add("Especialidad2");
-        specialities.add("Especialidad3");
-        specialities.add("Especialidad4");
-        specialities.add("Especialidad5");
-        specialities.add("Especialidad6");
-
         gridview = (GridView) view.findViewById(R.id.gridview);
-        gridview.setAdapter(new ImageAdapter(getActivity(), specialities));
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-
                 anInterface.changeFragment(Integer.toString(position), 2);
+                IDuty.APPLICATION.getTurn().setSpecialityId(specialities.get(position).getId());
+                IDuty.APPLICATION.getTurn().setSpecialityName(specialities.get(position).getName());
                 Toast.makeText(getActivity(), "" + position,
                         Toast.LENGTH_SHORT).show();
             }
         });
 
+        readEntity();
+
         return view;
+    }
+
+    private void readEntity() {
+        specialityHashMap = IDuty.APPLICATION.getMyClinic().getSpecialitieList();
+
+        specialities = new ArrayList<>();
+
+        for(Map.Entry<String, Speciality> e : specialityHashMap.entrySet()) {
+            specialities.add(e.getValue());
+        }
+        gridview.setAdapter(new ImageAdapter(getActivity(), specialities));
     }
 
     public class ImageAdapter extends BaseAdapter {
 
         private Context context;
-        private List<String> clinics;
+        private List<EntityInterface> entityList;
 
-        public ImageAdapter(Context context, List<String> clinics) {
+        public ImageAdapter(Context context, List<EntityInterface> entityList) {
             this.context = context;
-            this.clinics = clinics;
+            this.entityList = entityList;
         }
 
         public View getView(int position, View convertView, ViewGroup parent) {
@@ -82,14 +89,14 @@ public class SpecialtiesFragment extends Fragment {
             View view =  inflater.inflate(R.layout.adapter_grid_item, null);
 
             TextView textView = (TextView) view.findViewById(R.id.tvClinic);
-            textView.setText(clinics.get(position));
+            textView.setText(entityList.get(position).getName());
 
             return view;
         }
 
         @Override
         public int getCount() {
-            return clinics.size();
+            return entityList.size();
         }
 
         @Override

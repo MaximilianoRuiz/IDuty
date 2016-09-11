@@ -52,6 +52,8 @@ public class ClinicsFragment extends Fragment {
                 IDuty.APPLICATION.createTurn();
                 IDuty.APPLICATION.setMyClinic(clinicHashMap.get(clinics.get(position).getId()));
                 IDuty.APPLICATION.getTurn().setClinic((Clinic) clinics.get(position));
+                IDuty.APPLICATION.getTurn().setClinicId(clinics.get(position).getId());
+                IDuty.APPLICATION.getTurn().setClinicName(clinics.get(position).getName());
                 Toast.makeText(getActivity(), "" + position,
                         Toast.LENGTH_SHORT).show();
             }
