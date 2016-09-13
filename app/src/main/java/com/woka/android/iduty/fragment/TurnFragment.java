@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.woka.android.iduty.IDuty;
 import com.woka.android.iduty.R;
+import com.woka.android.iduty.activity.FragmentCoordinatorInterface;
 import com.woka.android.iduty.entity.Turn;
 
 import java.text.DateFormat;
@@ -26,6 +27,8 @@ public class TurnFragment extends Fragment {
 
     private Turn turn;
 
+    FragmentCoordinatorInterface anInterface;
+
     public TurnFragment() {
     }
 
@@ -33,6 +36,7 @@ public class TurnFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_turn, container, false);
+        anInterface = IDuty.APPLICATION.getCoordinatorInterface();
 
         initWidgets(view);
         setListeners();
@@ -79,6 +83,7 @@ public class TurnFragment extends Fragment {
                 turn.setUserUid(IDuty.APPLICATION.getUser().getUid());
                 turn.setUserName(IDuty.APPLICATION.getUser().getLastName());
                 IDuty.APPLICATION.sendTurn(turn);
+                anInterface.changeFragment("", 0);
             }
         });
     }

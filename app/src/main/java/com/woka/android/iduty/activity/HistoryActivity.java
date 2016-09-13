@@ -6,6 +6,7 @@ import android.widget.ListView;
 
 import com.woka.android.iduty.R;
 import com.woka.android.iduty.adapter.TurnListAdapter;
+import com.woka.android.iduty.entity.Turn;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,12 +27,16 @@ public class HistoryActivity extends AppCompatActivity {
     private void initWidgets() {
         lvHistories = (ListView) findViewById(R.id.lvHistories);
 
-        List<String> list = new ArrayList<>();
-        list.add("hola");
-        list.add("hola");
-        list.add("hola");
-        list.add("hola");
-        list.add("hola");
+        List<Turn> list = new ArrayList<>();
+        Turn turn = new Turn();
+        turn.setClinicName("clinica");
+        turn.setSpecialistName("especialista");
+        turn.setSpecialityName("especialidad");
+        list.add(turn);
+        list.add(turn);
+        list.add(turn);
+        list.add(turn);
+        list.add(turn);
         turnListAdapter = new TurnListAdapter(this, list);
 
         lvHistories.setAdapter(turnListAdapter);
